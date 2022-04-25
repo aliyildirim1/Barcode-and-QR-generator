@@ -1,6 +1,6 @@
 namespace Barcode_and_QR_generator
 {
-    public partial class Form1 : Form
+    public partial class FormMainMenu : Form
     {
 
         //Fields
@@ -10,7 +10,7 @@ namespace Barcode_and_QR_generator
         private Form activeForm;
 
         //Constructor
-        public Form1()
+        public FormMainMenu()
         {
             InitializeComponent();
             random = new Random();
@@ -22,7 +22,7 @@ namespace Barcode_and_QR_generator
             int index = random.Next(ThemeColor.ColorList.Count);
             while (tempIndex == index)
             {
-                index = random.Next(ThemeColor.ColorList.Count);
+                random.Next(ThemeColor.ColorList.Count);
             }
             tempIndex = index;
             string color = ThemeColor.ColorList[index];
@@ -50,7 +50,7 @@ namespace Barcode_and_QR_generator
         {
             foreach (Control previousBtn in panelMenu.Controls)
             {
-                if (previousBtn.GetType() != typeof(Button))
+                if (previousBtn.GetType() == typeof(Button))
                 {
                     previousBtn.BackColor = Color.FromArgb(51, 51, 76);
                     previousBtn.ForeColor = Color.Gainsboro;

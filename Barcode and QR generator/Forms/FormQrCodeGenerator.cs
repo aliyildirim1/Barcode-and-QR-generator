@@ -23,12 +23,15 @@ namespace Barcode_and_QR_generator.Forms
         {
 
             string qrData = tbxQrImageData.Text;
-            //string qrImageFileName = tbxQrImageFileName.Text;
+            
 
             QRCodeGenerator qr = new QRCodeGenerator();
             QRCodeData data = qr.CreateQrCode(qrData, QRCodeGenerator.ECCLevel.Q);
             QRCode code = new QRCode(data);
-            pictureBox1.Image = code.GetGraphic(30);
+
+            var bmp = code.GetGraphic(5);
+            pictureBox1.Image = bmp;
+            SaveQR(bmp);
             
 
             /*
@@ -46,6 +49,19 @@ namespace Barcode_and_QR_generator.Forms
             
              
              */
+        }
+        private void SaveQR(Bitmap bitmap)
+
+        {
+            string qrImageFileName = tbxQrImageFileName.Text;
+            var directoryPath = Application.StartupPath + "\\Images";
+            if(!Directory.Exists(directoryPath))
+                Directory.CreateDirectory(directoryPath);
+
+            var fileName =  qrImageFileName + ".jpg";
+            fileName = directoryPath + "\\" + fileName;
+
+            bitmap.Save(fileName,System.Drawing.Imaging.ImageFormat.Jpeg);
         }
     }
 }
