@@ -97,7 +97,7 @@ namespace Barcode_and_QR_generator
         //Qr Code Scanner
         private void button2_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
+            OpenChildform(new Forms.FormQrCodeScanner(), sender);
 
         }
         //Settings
