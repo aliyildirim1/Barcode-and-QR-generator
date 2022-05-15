@@ -36,6 +36,7 @@
             this.comboBox_camera = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.exitButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             // 
             // button_scan
             // 
-            this.button_scan.Location = new System.Drawing.Point(277, 383);
+            this.button_scan.Location = new System.Drawing.Point(164, 383);
             this.button_scan.Name = "button_scan";
             this.button_scan.Size = new System.Drawing.Size(108, 29);
             this.button_scan.TabIndex = 2;
@@ -97,11 +98,22 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // exitButton
+            // 
+            this.exitButton.Location = new System.Drawing.Point(291, 383);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(94, 29);
+            this.exitButton.TabIndex = 6;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
             // FormQrCodeScanner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox_camera);
             this.Controls.Add(this.pictureBox);
@@ -127,5 +139,6 @@
         private ComboBox comboBox_camera;
         private Label label2;
         private System.Windows.Forms.Timer timer1;
+        private Button exitButton;
     }
 }

@@ -7,14 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using System.IO;
+using AForge;
+
+
 using AForge.Video.DirectShow;
 using AForge.Video;
 using ZXing;
+using ZXing.Aztec;
+using ZXing.Windows.Compatibility;
 
 namespace Barcode_and_QR_generator.Forms
 {
     public partial class FormQrCodeScanner : Form
     {
+        public int islemdurumu = 0;
+        private FilterInfoCollection videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);   
+        private VideoCaptureDevice captureDevice=null;
+        public int selected = 0;
+        public int kamerabaslat = 0;
+
+
+
         public FormQrCodeScanner()
         {
             InitializeComponent();
@@ -24,22 +39,43 @@ namespace Barcode_and_QR_generator.Forms
         {
 
         }
-        FilterInfoCollection filter;
-        VideoCaptureDevice captureDevice;
+
         private void FormQrCodeScanner_Load(object sender, EventArgs e)
         {
-            filter = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            foreach(FilterInfo filterInfo in filter)
+           
+            foreach (FilterInfo filterInfo in videoDevices)
                 comboBox_camera.Items.Add(filterInfo.Name);
-            comboBox_camera.SelectedIndex = 0;  
-            
+            comboBox_camera.SelectedIndex = 0;
         }
         private void button_scan_Click(object sender, EventArgs e)
         {
-            captureDevice = new VideoCaptureDevice(filter[comboBox_camera.SelectedIndex].MonikerString);
-            captureDevice.NewFrame += CaptureDevice_NewFrame;
-            captureDevice.Start();
-            timer1.Start();
+            selected = comboBox_camera.SelectedIndex;
+            if (islemdurumu == 0)
+            {
+                if (kamerabaslat > 0) return;
+                try
+                {
+                    captureDevice = new VideoCaptureDevice(videoDevices[selected].MonikerString);
+                    captureDevice.NewFrame += new NewFrameEventHandler(CaptureDevice_NewFrame);
+                    captureDevice.Start(); kamerabaslat = 1;
+                    timer1.Start();
+                }
+                catch
+                {
+                    MessageBox.Show("Restart The Program");
+                    if (!(captureDevice == null))
+                        if (captureDevice.IsRunning)
+                        {
+                            captureDevice.SignalToStop();
+                            captureDevice = null;
+                        }
+                }
+            }
+
+            //captureDevice = new VideoCaptureDevice(filter[comboBox_camera.SelectedIndex].MonikerString);
+            //captureDevice.NewFrame += new NewFrameEventHandler(CaptureDevice_NewFrame);
+            //captureDevice.Start();
+
         }
 
         private void CaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -49,29 +85,53 @@ namespace Barcode_and_QR_generator.Forms
 
         private void FormQrCodeScanner_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(captureDevice.IsRunning)
-                captureDevice.Stop();
+            try
+            {
+                captureDevice.SignalToStop();
+                captureDevice = null;
+                if (!(captureDevice == null))
+                {
+                    captureDevice.Stop();
+                    captureDevice = null;
+                }
+            }
+            catch { }
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if(pictureBox.Image != null)
+            if (pictureBox.Image != null)
             {
 
-                var reader = new ZXing.Windows.Compatibility.BarcodeReader();
+                BarcodeReader reader = new BarcodeReader();
                 //BarcodeReader barcode = new BarcodeReader();
 
                 Result result = reader.Decode((Bitmap)pictureBox.Image);
-                if(result != null)
+                if (result != null)
                 {
-                    textBox_display.Text= result.ToString();
+                    textBox_display.Text = result.ToString();
                     timer1.Stop();
-                    if (captureDevice.IsRunning)
-                        captureDevice.Stop();
+                    
                 }
             }
+
         }
 
-        
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                captureDevice.SignalToStop();
+                captureDevice = null;
+                if (!(captureDevice == null))
+                {
+                    captureDevice.Stop();
+                    captureDevice = null;
+                }
+            }
+            catch { }
+            Application.Exit();
+        }
     }
 }
