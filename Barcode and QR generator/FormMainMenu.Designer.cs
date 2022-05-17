@@ -30,28 +30,26 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainMenu));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.btnCloseChildForm = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktopPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
+            this.panelDesktopPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.panelMenu.Controls.Add(this.button5);
-            this.panelMenu.Controls.Add(this.button4);
-            this.panelMenu.Controls.Add(this.button3);
             this.panelMenu.Controls.Add(this.button2);
             this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.panelLogo);
@@ -61,58 +59,6 @@
             this.panelMenu.Size = new System.Drawing.Size(250, 643);
             this.panelMenu.TabIndex = 0;
             this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
-            // 
-            // button5
-            // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(0, 310);
-            this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.button5.Size = new System.Drawing.Size(250, 60);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "   QR Kod Tara";
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(0, 250);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(250, 60);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "   QR Kod Tara";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 190);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(250, 60);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "   Ayarlar";
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -182,12 +128,25 @@
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.panelTitleBar.Controls.Add(this.btnCloseChildForm);
             this.panelTitleBar.Controls.Add(this.lblTitle);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(250, 0);
             this.panelTitleBar.Name = "panelTitleBar";
             this.panelTitleBar.Size = new System.Drawing.Size(980, 70);
             this.panelTitleBar.TabIndex = 1;
+            this.panelTitleBar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTitleBar_Paint);
+            // 
+            // btnCloseChildForm
+            // 
+            this.btnCloseChildForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseChildForm.Location = new System.Drawing.Point(6, 12);
+            this.btnCloseChildForm.Name = "btnCloseChildForm";
+            this.btnCloseChildForm.Size = new System.Drawing.Size(75, 49);
+            this.btnCloseChildForm.TabIndex = 5;
+            this.btnCloseChildForm.Text = "X";
+            this.btnCloseChildForm.UseVisualStyleBackColor = true;
+            this.btnCloseChildForm.Click += new System.EventHandler(this.btnCloseChildForm_Click);
             // 
             // lblTitle
             // 
@@ -200,16 +159,29 @@
             this.lblTitle.Size = new System.Drawing.Size(81, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "HOME";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // panelDesktopPanel
             // 
+            this.panelDesktopPanel.Controls.Add(this.pictureBox1);
             this.panelDesktopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopPanel.Location = new System.Drawing.Point(250, 70);
             this.panelDesktopPanel.Name = "panelDesktopPanel";
             this.panelDesktopPanel.Size = new System.Drawing.Size(980, 573);
             this.panelDesktopPanel.TabIndex = 2;
             // 
-            // Form1
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(27, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(930, 521);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // FormMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -217,7 +189,10 @@
             this.Controls.Add(this.panelDesktopPanel);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
-            this.Name = "Form1";
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1100, 500);
+            this.Name = "FormMainMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAnaMenu";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelMenu.ResumeLayout(false);
@@ -225,6 +200,9 @@
             this.panelLogo.PerformLayout();
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
+            this.panelDesktopPanel.ResumeLayout(false);
+            this.panelDesktopPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -234,7 +212,6 @@
         private Panel panelMenu;
         private Button button1;
         private Panel panelLogo;
-        private Button button5;
         private Button button4;
         private Button button3;
         private Button button2;
@@ -243,5 +220,7 @@
         private Label lblTitle;
         private Label label1;
         private Panel panelDesktopPanel;
+        private Button btnCloseChildForm;
+        private PictureBox pictureBox1;
     }
 }

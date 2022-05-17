@@ -14,6 +14,7 @@ namespace Barcode_and_QR_generator
         {
             InitializeComponent();
             random = new Random();
+            btnCloseChildForm.Visible = false;
         }
 
         //Methods
@@ -43,6 +44,8 @@ namespace Barcode_and_QR_generator
                     currentButton.ForeColor = Color.White;
                     panelTitleBar.BackColor = color;
                     panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+                    btnCloseChildForm.Visible = true;
+
                 }
             }
         }
@@ -79,12 +82,6 @@ namespace Barcode_and_QR_generator
 
 
 
-
-
-
-
-
-
         private void panelMenu_Paint(object sender, PaintEventArgs e)
         {
 
@@ -110,6 +107,44 @@ namespace Barcode_and_QR_generator
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelTitleBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+
+        }
+
+        private void btnCloseChildForm_Click(object sender, EventArgs e)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            Reset();
+        }
+        private void Reset()
+        {
+            DisableButton();
+            lblTitle.Text = "HOME";
+            panelTitleBar.BackColor = Color.FromArgb(0, 150, 136);
+            panelLogo.BackColor = Color.FromArgb(39, 39, 58);
+            currentButton = null;
+            btnCloseChildForm.Visible = false;
         }
     }
 }

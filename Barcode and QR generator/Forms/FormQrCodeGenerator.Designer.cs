@@ -107,7 +107,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGenerateQr);
             this.Name = "FormQrCodeGenerator";
-            this.Text = "QR Uygulaması";
+            this.Text = "QR Kod Oluştur";
+            this.Load += new System.EventHandler(this.FormQrCodeGenerator_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

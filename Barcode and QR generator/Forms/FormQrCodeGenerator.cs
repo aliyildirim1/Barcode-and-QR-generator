@@ -63,5 +63,10 @@ namespace Barcode_and_QR_generator.Forms
 
             bitmap.Save(fileName,System.Drawing.Imaging.ImageFormat.Jpeg);
         }
+
+        private void FormQrCodeGenerator_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

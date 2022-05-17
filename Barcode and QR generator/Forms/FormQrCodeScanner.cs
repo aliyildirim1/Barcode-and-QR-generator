@@ -8,14 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using System.IO;
-using AForge;
 
 
 using AForge.Video.DirectShow;
 using AForge.Video;
 using ZXing;
-using ZXing.Aztec;
 using ZXing.Windows.Compatibility;
 
 namespace Barcode_and_QR_generator.Forms
@@ -35,10 +32,6 @@ namespace Barcode_and_QR_generator.Forms
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void FormQrCodeScanner_Load(object sender, EventArgs e)
         {
@@ -87,7 +80,7 @@ namespace Barcode_and_QR_generator.Forms
         {
             try
             {
-                captureDevice.SignalToStop();
+                captureDevice?.SignalToStop();
                 captureDevice = null;
                 if (!(captureDevice == null))
                 {

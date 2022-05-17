@@ -55,7 +55,6 @@
             this.label1.Size = new System.Drawing.Size(60, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Kamera";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button_scan
             // 
@@ -121,7 +120,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_display);
             this.Name = "FormQrCodeScanner";
-            this.Text = "FormQrCodeScanner";
+            this.Text = "QR Kod and Barkod Okut";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormQrCodeScanner_FormClosing);
             this.Load += new System.EventHandler(this.FormQrCodeScanner_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
